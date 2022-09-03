@@ -22,11 +22,11 @@ public class Main {
         System.out.println(canRide(age));
 
 //  ДЗ 3.1.7.3 вар.1
-        int one = 2;
-        int two = 1;
-        int free = 3;
+        int one = 2, two = 1, free = 3;
         System.out.printf("\nИз чисел %d, %d и %d бо́льшим является %s.",
                 one, two, free, aLargerNumber(one, two, free));
+
+        System.out.println();
     }
 
     static String commingOfAge(int age) {
@@ -71,12 +71,18 @@ public class Main {
     }
 
     static String aLargerNumber(int one, int two, int free) {
-        if (one == two && one == free) return "никакое; все три числа равны";
-        else if (one == two && one > free) return "первое и второе; они равны";
-        else if (two == free && two >one) return "второе и третье; они равны";
-        else if (free == one && free > two) return "первое и третье; они равны";
-        else if (one > two && one > free) return "первое";
-        else if (two > one && two > free) return "второе";
-        return "третье";
-    }
+        if (one == two)
+            if (one == free) return "никакое; значения всех трёх чисел равны";
+            else if (one > free) return "первое и второе;\n" +
+                    "они равны и их значения больше значения третьего числа";
+            else return "третье";
+        else if (one > two)
+            if (one == free) return "первое и третье;\n" +
+                    "их значения равны и больше значения второго числа";
+            else if (one > free) return "первое";
+            else return "третье";
+        else if (two == free) return "второе и третье;\n" +
+                "их значения равны и больше значения первого числа";
+        else if (two > free) return "второе";
+        else return "третье";    }
 }
